@@ -10,39 +10,23 @@ using std::cout;
 using std::endl;
 
 
-string tojson(string item, bool state)
-{
+string tojson(string item, bool state) {// return toggle state to a json string for i3
 	json out;
 	out["full_text"] = item;
-	if (state)
-	{
+	if (state) {
 		out["color"] = "#00ff00";
 	}
-	else
-	{
+	else {
 		out["color"] = "#ff0000";
 	}
 	return out.dump();
 }
-int main()
-{
+int main() {
     cout << "{\"version\":1}" << endl << "[[]," << endl;
     const string num = "NUM";
-    while (true)
-    {
+    while (true) { // Loop output infinitely for output for i3
 
     	cout << "[" << tojson(num, is_numlock_activated()) << "]," << endl;
     	usleep(100000);
     }
 }
-/*
-int main()
-{
-	cout << "Hello world";
-	while (true)
-	{
-		cout << "Caps lock state: " << is_numlock_activated() << endl;
-		usleep(1000211);
-	}
-}
-*/
